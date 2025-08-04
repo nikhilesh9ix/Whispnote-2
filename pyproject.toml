@@ -1,0 +1,28 @@
+[project]
+name = "whispnote"
+version = "1.0.0"
+description = "WhispNote: A multilingual, AI-powered voice note and corpus collection platform"
+authors = [{ name = "Nikhilesh Raju", email = "nikhilesh@example.com" }]
+license = { text = "AGPL-3.0-only" }
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest",
+    "streamlit",
+    "transformers",
+    "torch",
+    "openai-whisper",
+    "pytesseract",
+    "keybert"
+]
+
+[tool.setuptools]
+packages = ["whispnote"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "N"]
