@@ -1,0 +1,53 @@
+{
+    "recommendations": [
+        // Python Development
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "charliermarsh.ruff",
+        "ms-python.mypy-type-checker",
+
+        // Jupyter Notebooks
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+
+        // Streamlit Development
+        "danielpinto8zz6.c-cpp-compile-run",
+
+        // Git & Version Control
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "gitlab.gitlab-workflow",
+
+        // Markdown & Documentation
+        "davidanson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-preview-github-styles",
+        "bierner.markdown-mermaid",
+
+        // Code Quality & Formatting
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "ms-vscode.vscode-json",
+
+        // Development Tools
+        "ms-vscode.vscode-yaml",
+        "redhat.vscode-xml",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+
+        // Productivity
+        "gruntfuggly.todo-tree",
+        "aaron-bond.better-comments",
+        "streetsidesoftware.code-spell-checker",
+
+        // Themes & UI
+        "pkief.material-icon-theme",
+        "github.github-vscode-theme",
+        "ms-vscode.theme-predawnkit"
+    ],
+    "unwantedRecommendations": [
+        "ms-python.pylint",
+        "ms-python.flake8"
+    ]
+}

@@ -1,0 +1,300 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🚀 Start WhispNote",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "streamlit",
+                "run",
+                "app.py",
+                "--server.port",
+                "8506"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "isBackground": true,
+            "problemMatcher": [],
+            "detail": "Start the main WhispNote Streamlit application"
+        },
+        {
+            "label": "📦 Install Dependencies",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "sync"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Install all project dependencies using UV"
+        },
+        {
+            "label": "🧪 Run Tests",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "pytest",
+                "-v"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "problemMatcher": [
+                "$python"
+            ],
+            "detail": "Run all tests with verbose output"
+        },
+        {
+            "label": "🧪 Run Tests with Coverage",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "pytest",
+                "--cov=.",
+                "--cov-report=html",
+                "--cov-report=term-missing"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "problemMatcher": [
+                "$python"
+            ],
+            "detail": "Run tests with coverage report"
+        },
+        {
+            "label": "🔍 Lint Code",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "ruff",
+                "check",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$python"
+            ],
+            "detail": "Check code with Ruff linter"
+        },
+        {
+            "label": "🔧 Fix Linting Issues",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "ruff",
+                "check",
+                ".",
+                "--fix"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$python"
+            ],
+            "detail": "Auto-fix linting issues with Ruff"
+        },
+        {
+            "label": "✨ Format Code",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "black",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Format code with Black"
+        },
+        {
+            "label": "🔄 Format and Lint",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "✨ Format Code",
+                "🔧 Fix Linting Issues"
+            ],
+            "group": "build",
+            "detail": "Format code and fix linting issues"
+        },
+        {
+            "label": "🌏 Test Swecha API",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "python",
+                "test_swecha_api.py"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "detail": "Test Swecha API integration"
+        },
+        {
+            "label": "📊 Quick Test",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "python",
+                "quick_test.py"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "detail": "Run quick functionality test"
+        },
+        {
+            "label": "🧹 Clean Cache",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Get-ChildItem -Path . -Recurse -Directory -Name '__pycache__' | ForEach-Object { Remove-Item -Path $_ -Recurse -Force }; Get-ChildItem -Path . -Recurse -File -Name '*.pyc' | Remove-Item -Force"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Clean Python cache files and directories"
+        },
+        {
+            "label": "📚 Install Test Dependencies",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "add",
+                "--dev",
+                "pytest",
+                "pytest-cov",
+                "black",
+                "ruff",
+                "mypy"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Install development and testing dependencies"
+        },
+        {
+            "label": "🔍 Type Check",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "mypy",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$python"
+            ],
+            "detail": "Run MyPy type checking"
+        },
+        {
+            "label": "🛠️ Setup Development Environment",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "📦 Install Dependencies",
+                "📚 Install Test Dependencies"
+            ],
+            "group": "build",
+            "detail": "Complete development environment setup"
+        }
+    ]
+}
