@@ -36,7 +36,6 @@ pathlib2>=2.3.7
 python-dateutil>=2.8.2
 
 # Optional dependencies for enhanced functionality
-# Uncomment if needed:
 # tensorflow>=2.9.0  # For advanced ML models
 # spacy>=3.4.0       # For better NLP
 # fastapi>=0.95.0    # For API endpoints
