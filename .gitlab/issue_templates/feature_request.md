@@ -1,135 +1,67 @@
 ---
-name: ✨ Feature Request
-about: Suggest a new feature or enhancement for WhispNote
-title: "[FEATURE] "
-labels: ["enhancement", "needs-discussion"]
-assignees: ""
+name: Feature Request
+about: Suggest an idea for WhispNote
+title: '[FEATURE] '
+labels: enhancement
+assignees: ''
 ---
 
-## 🎯 Feature Summary
+## Is your feature request related to a problem? Please describe.
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-<!-- A brief, clear description of the feature you'd like to see -->
+## Describe the solution you'd like
+A clear and concise description of what you want to happen.
 
-## 💡 Motivation
+## Describe alternatives you've considered
+A clear and concise description of any alternative solutions or features you've considered.
 
-<!-- Why is this feature needed? What problem does it solve? -->
+## Feature Category
+Please select the category that best describes your feature request:
+- [ ] Audio Processing
+- [ ] Transcription & AI
+- [ ] User Interface
+- [ ] Data Management
+- [ ] API Integration
+- [ ] Export/Import
+- [ ] Performance
+- [ ] Security
+- [ ] Accessibility
+- [ ] Mobile Support
+- [ ] Other: ___________
 
-## 📋 Detailed Description
+## User Story
+As a [type of user], I want [functionality] so that [benefit/value].
 
-<!-- Provide a detailed description of the feature -->
-
-## 🔧 Proposed Implementation
-
-<!-- How do you envision this feature working? -->
-
-### User Interface
-
-<!-- Describe any UI changes or additions -->
-
-### Technical Approach
-
-<!-- Any technical considerations or approaches -->
-
-## 📱 Use Cases
-
-<!-- Describe specific scenarios where this feature would be used -->
-
-1. **Use Case 1**:
-
-   - User: <!-- Type of user -->
-   - Scenario: <!-- What they want to do -->
-   - Benefit: <!-- How this feature helps -->
-
-2. **Use Case 2**:
-   - User: <!-- Type of user -->
-   - Scenario: <!-- What they want to do -->
-   - Benefit: <!-- How this feature helps -->
-
-## 🎨 Mockups/Examples
-
-<!-- Include any mockups, wireframes, or examples if applicable -->
-
-## 📊 Acceptance Criteria
-
-<!-- Define what "done" looks like for this feature -->
-
+## Acceptance Criteria
+Please describe the conditions that must be met for this feature to be considered complete:
 - [ ] Criterion 1
 - [ ] Criterion 2
 - [ ] Criterion 3
-- [ ] Documentation updated
-- [ ] Tests added
-- [ ] Performance considerations addressed
 
-## 🔄 Alternative Solutions
+## Priority Level
+How important is this feature to you?
+- [ ] Critical (blocking current workflow)
+- [ ] High (would significantly improve experience)
+- [ ] Medium (nice to have improvement)
+- [ ] Low (minor enhancement)
 
-<!-- Describe any alternative solutions or features you've considered -->
+## Technical Considerations
+If you have technical knowledge, please share any implementation thoughts:
+- Estimated complexity: [Low/Medium/High]
+- Potential impact areas: [list components that might be affected]
+- Dependencies: [any external libraries or services needed]
 
-## 📈 Impact Assessment
+## Mockups/Examples
+If applicable, add mockups, screenshots, or examples to help explain your feature request.
 
-### 👥 User Impact
+## Additional Context
+Add any other context, research, or screenshots about the feature request here.
 
-- **Target Users**: <!-- Who benefits from this feature -->
-- **Usage Frequency**: <!-- How often would this be used -->
-- **User Benefit**: <!-- What value does this provide -->
+## Related Issues
+Link any related issues here using #issue_number
 
-### 🔧 Technical Impact
-
-- **Complexity**: <!-- Low/Medium/High -->
-- **Dependencies**: <!-- Any new dependencies required -->
-- **Breaking Changes**: <!-- Yes/No and explanation -->
-- **Performance Impact**: <!-- Expected impact on performance -->
-
-## 🎯 Priority
-
-<!-- Select the priority level -->
-
-- [ ] Low - Nice to have, not urgent
-- [ ] Medium - Would improve user experience
-- [ ] High - Important for user satisfaction
-- [ ] Critical - Essential for core functionality
-
-## 🚀 Implementation Phases
-
-<!-- Break down the feature into implementable phases if applicable -->
-
-### Phase 1: <!-- Core functionality -->
-
-- [ ] Task 1
-- [ ] Task 2
-
-### Phase 2: <!-- Enhanced features -->
-
-- [ ] Task 3
-- [ ] Task 4
-
-### Phase 3: <!-- Advanced features -->
-
-- [ ] Task 5
-- [ ] Task 6
-
-## 📚 Research & References
-
-<!-- Include any research, articles, or references that support this feature -->
-
-- [Reference 1](url)
-- [Reference 2](url)
-
-## 🔗 Related Issues
-
-<!-- Link any related issues or features -->
-
-- Related to #
-- Depends on #
-- Blocks #
-
-## 💬 Community Discussion
-
-<!-- Has this been discussed elsewhere? Link to discussions -->
-
-## 📋 Checklist
-
-- [ ] I have searched existing issues to ensure this is not a duplicate
-- [ ] I have provided a clear description and motivation
-- [ ] I have considered the impact on existing functionality
-- [ ] I have outlined acceptance criteria
-- [ ] I am willing to help implement this feature (if applicable)
+## Would you be willing to contribute?
+- [ ] Yes, I'd like to implement this feature
+- [ ] Yes, I can help with testing
+- [ ] Yes, I can help with documentation
+- [ ] No, but I'm happy to provide feedback
