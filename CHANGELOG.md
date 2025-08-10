@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- 🎙️ **Live Audio Recording**: Device recording functionality with browser fallback
+- 🎙️ **Live Audio Recording**: Device recording functionality with browser recording support
 - 🌏 **Swecha API Integration**: Telugu corpus contribution with bearer token authentication
 - 📊 **Enhanced Statistics**: Detailed analytics dashboard
 - 🔧 **UV Package Manager**: Fast dependency resolution and management
@@ -95,7 +95,7 @@ This major release represents a complete rewrite of WhispNote with significant a
 #### 🎙️ Audio Recording System
 
 - **Device Recording**: Direct microphone access with clear instructions
-- **Browser Fallback**: Experimental web-based recording for compatibility
+- **Browser Recording**: Web-based recording for compatibility
 - **Format Support**: Enhanced audio format compatibility
 - **Quality Controls**: Audio validation and preprocessing
 

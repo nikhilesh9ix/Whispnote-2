@@ -88,7 +88,7 @@
 
 ### 🔄 Current State
 
-- **Recording**: Device recording with browser fallback
+- **Recording**: Device recording with browser recording support
 - **API Integration**: Swecha API partially working (3/10 endpoints)
 - **Testing**: Comprehensive test suite
 - **Development**: VS Code workspace configured

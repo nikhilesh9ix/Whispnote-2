@@ -1,6 +1,7 @@
 import os
 import uuid
 from datetime import datetime
+from typing import Any, Dict
 
 import pandas as pd
 import streamlit as st
@@ -24,7 +25,7 @@ st.set_page_config(
 
 
 # Initialize session state
-def init_session_state():
+def init_session_state() -> None:
     if "notes" not in st.session_state:
         st.session_state.notes = []
     if "current_note" not in st.session_state:
@@ -37,7 +38,7 @@ def init_session_state():
 
 # Initialize components
 @st.cache_resource
-def load_components():
+def load_components() -> Dict[str, Any]:
     return {
         "transcriber": WhisperTranscriber(),
         "summarizer": IndicBARTSummarizer(),
@@ -48,7 +49,7 @@ def load_components():
     }
 
 
-def main():
+def main() -> None:
     init_session_state()
     components = load_components()
 
@@ -130,6 +131,18 @@ def main():
             st.success("✅ Contributing to corpus")
         else:
             st.info("🔒 Private mode - data stays local")
+
+        # Privacy Information Section
+        st.subheader("🔒 Privacy")
+        with st.expander("Privacy Information", expanded=True):
+            st.markdown("""
+            **Your privacy is our priority:**
+
+            • **Local Storage:** All notes stored on your device
+            • **Opt-in Only:** Data contributed only with consent
+            • **Anonymized:** No personal information shared
+            • **Offline First:** Works completely offline
+            """)
 
         # App info
         st.subheader("About")
@@ -254,7 +267,7 @@ def main():
 
             # Add browser-based recording option
             st.markdown("---")
-            st.subheader("Browser Recording (Experimental)")
+            st.subheader("Browser Recording")
 
             # HTML for browser recording
             browser_recording_html = """
@@ -327,9 +340,9 @@ def main():
 
             st.components.v1.html(browser_recording_html, height=200)
 
-            st.warning("""
-            **Note**: Browser recording is experimental and recordings cannot be directly processed yet.
-            For best results, please use your device's voice recorder app and upload the file.
+            st.info("""
+            **Note**: Browser recording allows direct audio capture in your web browser.
+            You can also use your device's voice recorder app and upload the file for additional flexibility.
             """)
 
         else:  # Upload Audio File
@@ -617,6 +630,24 @@ def main():
     with tab5:
         st.header("Corpus Statistics")
 
+        # Privacy notice - prominently displayed at the top
+        st.markdown(
+            """
+        <div class='privacy-notice'>
+        <h4>🔒 Privacy Information</h4>
+        <p>Your privacy is our priority:</p>
+        <ul>
+        <li><strong>Local Storage:</strong> All notes are stored locally on your device</li>
+        <li><strong>Opt-in Corpus:</strong> Data is only contributed to the corpus with your explicit consent</li>
+        <li><strong>Anonymized:</strong> Contributed data is anonymized and contains no personal information</li>
+        <li><strong>Offline First:</strong> App works completely offline</li>
+        </ul>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
+        st.markdown("---")
+
         # Load statistics
         stats = components["storage"].get_corpus_stats()
 
@@ -727,23 +758,6 @@ def main():
 
             **Current Status:** The API is accessible but contribution endpoints are still being developed.
             """)
-
-        # Privacy notice
-        st.markdown(
-            """
-        <div class='privacy-notice'>
-        <h4>🔒 Privacy Information</h4>
-        <p>Your privacy is our priority:</p>
-        <ul>
-        <li><strong>Local Storage:</strong> All notes are stored locally on your device</li>
-        <li><strong>Opt-in Corpus:</strong> Data is only contributed to the corpus with your explicit consent</li>
-        <li><strong>Anonymized:</strong> Contributed data is anonymized and contains no personal information</li>
-        <li><strong>Offline First:</strong> App works completely offline</li>
-        </ul>
-        </div>
-        """,
-            unsafe_allow_html=True,
-        )
 
 
 if __name__ == "__main__":

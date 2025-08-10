@@ -154,16 +154,16 @@ graph TD
     A[Audio Upload] --> B[Whisper Transcription]
     B --> C[Text Processing]
     C --> D[Storage Manager]
-    
+
     E[Image Upload] --> F[OCR Processing]
     F --> C
-    
+
     C --> G[Summarization]
     C --> H[Keyword Extraction]
-    
+
     D --> I[Local Storage]
     D --> J[Corpus Contribution]
-    
+
     I --> K[Export Utils]
     K --> L[Document Export]
 ```
@@ -213,7 +213,7 @@ pip install fastapi uvicorn
 ## 🎯 **Future Enhancements**
 
 ### Planned Features
-- **Real-time Recording**: WebRTC integration for browser recording
+- **Enhanced Recording**: Advanced WebRTC features for improved browser recording
 - **Advanced Models**: Integration with newer multilingual models
 - **API Layer**: REST API for integration with other applications
 - **Mobile App**: React Native or Flutter mobile application

@@ -360,7 +360,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Upcoming Features
 
-- [ ] Real-time voice recording interface
+- [ ] Enhanced browser recording with real-time processing
 - [ ] Advanced note linking and cross-references
 - [ ] Voice note playback with synchronized transcripts
 - [ ] Collaborative features for shared notebooks
