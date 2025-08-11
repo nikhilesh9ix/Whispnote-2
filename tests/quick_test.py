@@ -1,7 +1,16 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Test basic endpoints manually
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTQ1ODA1ODgsInN1YiI6IjgzMDAzYzQwLThmYzAtNDg4ZS1iMDgzLTA3NTViZDAzNTIwMSJ9.S02P9mEBhHkom4HT5yDFqmMGX3PRLNEUJ_eEYcH3zXQ"
+token = os.getenv("SWECHA_API_TOKEN")
+if not token:
+    print("❌ Error: SWECHA_API_TOKEN not found in environment variables")
+    print("💡 Create a .env file based on .env.example and add your API token")
+    exit(1)
 base_url = "https://api.corpus.swecha.org"
 headers = {"Authorization": f"Bearer {token}"}
 

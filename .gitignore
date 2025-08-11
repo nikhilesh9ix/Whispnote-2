@@ -8,3 +8,17 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Environment variables and secrets
+.env
+*.env
+!.env.example
+
+# API tokens and sensitive configuration
+src/api/swecha_config.py
+swecha_config.py
+
+# Local data directories
+whispnote_data/
+temp_*
+*.tmp
