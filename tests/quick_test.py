@@ -1,5 +1,6 @@
-import requests
 import os
+
+import requests
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -19,7 +20,7 @@ print("=" * 40)
 
 endpoints = [
     "/",
-    "/health", 
+    "/health",
     "/docs",
     "/openapi.json",
     "/stats",
