@@ -109,7 +109,7 @@ The API should provide functional endpoints for:
 **Priority**: **High** - This blocks the primary functionality of corpus contribution applications.
 
 **Related Files:**
-- API Test Report: [SWECHA_API_TEST_REPORT.md](https://github.com/nikhilesh9ix/Whispnote-2/blob/main/SWECHA_API_TEST_REPORT.md)
+- API Test Report: [SWECHA_API_TEST_REPORT.md](https://code.swecha.org/soai2025/techleads/soai-techlead-hackathon/whispnote/-/blob/main/SWECHA_API_TEST_REPORT.md)
 - Test Results: `swecha_api_test_report_20250812_231331.json`
 
 ## 📊 Supporting Data

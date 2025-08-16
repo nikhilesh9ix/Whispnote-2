@@ -452,7 +452,7 @@ HTTP_CONFIG = {
     "backoff_factor": 1,    # Exponential backoff
     "status_forcelist": [500, 502, 503, 504],  # Retry these HTTP codes
     "verify_ssl": True,     # SSL certificate verification
-    "user_agent": "WhispNote/2.0.0 (+https://github.com/nikhilesh9ix/Whispnote-2)"
+    "user_agent": "WhispNote/2.0.0 (+https://code.swecha.org/soai2025/techleads/soai-techlead-hackathon/whispnote)"
 }
 ```
 
@@ -723,7 +723,7 @@ Model Memory Requirements:
 ## 📞 **Support & Community**
 
 ### **Documentation & Resources**
-- **GitHub Repository**: https://github.com/nikhilesh9ix/Whispnote-2
+- **Swecha Repository**: https://code.swecha.org/soai2025/techleads/soai-techlead-hackathon/whispnote
 - **Issue Tracking**: GitHub Issues for bug reports and feature requests
 - **Wiki**: Comprehensive documentation and tutorials
 - **API Documentation**: Detailed API reference for developers
