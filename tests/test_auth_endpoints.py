@@ -3,18 +3,21 @@
 Advanced test script for Swecha API with bearer token
 """
 
-import requests
 import json
+
+import requests
+
 from src.api.swecha_config import SWECHA_API_TOKEN
+
 
 def test_endpoints_with_auth():
     """Test various endpoints with authentication"""
 
     base_url = "https://api.corpus.swecha.org"
     headers = {
-        'Authorization': f'Bearer {SWECHA_API_TOKEN}',
-        'Content-Type': 'application/json',
-        'User-Agent': 'WhispNote/1.0 (Telugu Voice Notes App)'
+        "Authorization": f"Bearer {SWECHA_API_TOKEN}",
+        "Content-Type": "application/json",
+        "User-Agent": "WhispNote/1.0 (Telugu Voice Notes App)",
     }
 
     # List of endpoints to test
@@ -104,6 +107,7 @@ def test_endpoints_with_auth():
             print(f"  ✅ {method} {endpoint}")
     else:
         print("  ❌ No working endpoints found")
+
 
 if __name__ == "__main__":
     test_endpoints_with_auth()

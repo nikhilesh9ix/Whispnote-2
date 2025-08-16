@@ -28,7 +28,7 @@ endpoints = [
     "/upload",
     "/corpus",
     "/texts",
-    "/audio"
+    "/audio",
 ]
 
 for endpoint in endpoints:

@@ -31,6 +31,7 @@ class SwechaConfig:
             return {"Authorization": f"Bearer {token}"}
         return {}
 
+
 # Backward compatibility
 SWECHA_API_TOKEN = SwechaConfig.get_api_token()
 SWECHA_API_BASE_URL = SwechaConfig.get_base_url()

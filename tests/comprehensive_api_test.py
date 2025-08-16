@@ -15,33 +15,38 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+
 class SwechaAPITester:
     """Comprehensive API testing class for Swecha Corpus API"""
 
     def __init__(self):
-        self.base_url = os.getenv("SWECHA_API_BASE_URL", "https://api.corpus.swecha.org")
+        self.base_url = os.getenv(
+            "SWECHA_API_BASE_URL", "https://api.corpus.swecha.org"
+        )
         self.token = os.getenv("SWECHA_API_TOKEN")
         self.session = requests.Session()
-        self.session.headers.update({
-            "User-Agent": "WhispNote-APITester/2.0.0",
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        })
+        self.session.headers.update(
+            {
+                "User-Agent": "WhispNote-APITester/2.0.0",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            }
+        )
 
         if self.token:
-            self.session.headers.update({
-                "Authorization": f"Bearer {self.token}"
-            })
+            self.session.headers.update({"Authorization": f"Bearer {self.token}"})
 
         self.test_results = {
             "timestamp": datetime.now().isoformat(),
             "has_token": bool(self.token),
             "base_url": self.base_url,
             "endpoints": {},
-            "summary": {}
+            "summary": {},
         }
 
-    def test_endpoint(self, endpoint: str, method: str = "GET", data: Optional[Dict] = None) -> Dict[str, Any]:
+    def test_endpoint(
+        self, endpoint: str, method: str = "GET", data: Optional[Dict] = None
+    ) -> Dict[str, Any]:
         """Test a specific API endpoint"""
         url = f"{self.base_url}{endpoint}"
 
@@ -58,7 +63,7 @@ class SwechaAPITester:
                 "status_code": response.status_code,
                 "response_time_ms": round(response.elapsed.total_seconds() * 1000, 2),
                 "headers": dict(response.headers),
-                "success": 200 <= response.status_code < 300
+                "success": 200 <= response.status_code < 300,
             }
 
             # Try to parse JSON response
@@ -97,7 +102,9 @@ class SwechaAPITester:
                 print(f"❌ {endpoint} ({description}): {result['error']}")
             else:
                 status_icon = "✅" if result["success"] else "⚠️"
-                print(f"{status_icon} {endpoint} ({description}): {result['status_code']} ({result['response_time_ms']}ms)")
+                print(
+                    f"{status_icon} {endpoint} ({description}): {result['status_code']} ({result['response_time_ms']}ms)"
+                )
 
                 # Show content preview for successful responses
                 if result["success"] and result.get("content"):
@@ -131,7 +138,9 @@ class SwechaAPITester:
                 print(f"❌ {endpoint} ({description}): {result['error']}")
             else:
                 status_icon = "✅" if result["success"] else "⚠️"
-                print(f"{status_icon} {endpoint} ({description}): {result['status_code']} ({result['response_time_ms']}ms)")
+                print(
+                    f"{status_icon} {endpoint} ({description}): {result['status_code']} ({result['response_time_ms']}ms)"
+                )
 
     def test_authentication(self):
         """Test authentication requirements"""
@@ -142,10 +151,12 @@ class SwechaAPITester:
             print("⚠️ No API token provided - testing without authentication")
             # Test without token
             no_auth_session = requests.Session()
-            no_auth_session.headers.update({
-                "User-Agent": "WhispNote-APITester/2.0.0",
-                "Accept": "application/json"
-            })
+            no_auth_session.headers.update(
+                {
+                    "User-Agent": "WhispNote-APITester/2.0.0",
+                    "Accept": "application/json",
+                }
+            )
 
             try:
                 response = no_auth_session.get(f"{self.base_url}/", timeout=5)
@@ -161,13 +172,14 @@ class SwechaAPITester:
             # Decode JWT to show expiration (basic)
             try:
                 import base64
+
                 # Simple JWT decode (just for info, not verification)
-                parts = self.token.split('.')
+                parts = self.token.split(".")
                 if len(parts) >= 2:
-                    payload = base64.b64decode(parts[1] + '==').decode('utf-8')
+                    payload = base64.b64decode(parts[1] + "==").decode("utf-8")
                     payload_data = json.loads(payload)
-                    if 'exp' in payload_data:
-                        exp_time = datetime.fromtimestamp(payload_data['exp'])
+                    if "exp" in payload_data:
+                        exp_time = datetime.fromtimestamp(payload_data["exp"])
                         print(f"🕐 Token expires: {exp_time}")
                         if exp_time < datetime.now():
                             print("⚠️ Token appears to be expired!")
@@ -187,8 +199,8 @@ class SwechaAPITester:
             "metadata": {
                 "test": True,
                 "timestamp": datetime.now().isoformat(),
-                "app_version": "2.0.0"
-            }
+                "app_version": "2.0.0",
+            },
         }
 
         # Test different contribution endpoints
@@ -208,10 +220,14 @@ class SwechaAPITester:
                 print(f"❌ {endpoint}: {result['error']}")
             else:
                 status_icon = "✅" if result["success"] else "⚠️"
-                print(f"{status_icon} {endpoint}: {result['status_code']} ({result['response_time_ms']}ms)")
+                print(
+                    f"{status_icon} {endpoint}: {result['status_code']} ({result['response_time_ms']}ms)"
+                )
 
                 if result.get("content"):
-                    print(f"   📋 Response: {json.dumps(result['content'], indent=2)[:200]}...")
+                    print(
+                        f"   📋 Response: {json.dumps(result['content'], indent=2)[:200]}..."
+                    )
 
     def test_api_integration(self):
         """Test API integration using WhispNote's integration class"""
@@ -227,10 +243,12 @@ class SwechaAPITester:
             print("📡 Integration Status:")
             print(f"   • API Available: {status.get('api_available', 'Unknown')}")
             print(f"   • Base URL: {status.get('base_url', 'Unknown')}")
-            print(f"   • Integration Active: {status.get('integration_active', 'Unknown')}")
+            print(
+                f"   • Integration Active: {status.get('integration_active', 'Unknown')}"
+            )
 
-            if status.get('api_info'):
-                info = status['api_info']
+            if status.get("api_info"):
+                info = status["api_info"]
                 print(f"   • API Version: {info.get('version', 'Unknown')}")
                 print(f"   • API Message: {info.get('message', 'Unknown')}")
 
@@ -239,13 +257,15 @@ class SwechaAPITester:
             contrib_result = integration.contribute_whispnote_data(
                 transcription="ఇది విస్ప్‌నోట్ నుండి ఒక టెస్ట్ కంట్రిబ్యూషన్",
                 language_code="te",
-                user_consent=True
+                user_consent=True,
             )
-            print(f"   📤 Contribution Result: {'✅ Success' if contrib_result else '❌ Failed'}")
+            print(
+                f"   📤 Contribution Result: {'✅ Success' if contrib_result else '❌ Failed'}"
+            )
 
             self.test_results["integration_test"] = {
                 "status": status,
-                "contribution_success": contrib_result
+                "contribution_success": contrib_result,
             }
 
         except ImportError as e:
@@ -261,22 +281,34 @@ class SwechaAPITester:
 
         # Summary statistics
         total_tests = len(self.test_results["endpoints"])
-        successful_tests = sum(1 for result in self.test_results["endpoints"].values()
-                             if not result.get("error") and result.get("success", False))
+        successful_tests = sum(
+            1
+            for result in self.test_results["endpoints"].values()
+            if not result.get("error") and result.get("success", False)
+        )
 
         print("\n📈 Test Summary:")
         print(f"   • Total Endpoints Tested: {total_tests}")
         print(f"   • Successful Responses: {successful_tests}")
         print(f"   • Failed/Error Responses: {total_tests - successful_tests}")
-        print(f"   • Success Rate: {(successful_tests/total_tests*100):.1f}%" if total_tests > 0 else "   • No tests completed")
+        print(
+            f"   • Success Rate: {(successful_tests / total_tests * 100):.1f}%"
+            if total_tests > 0
+            else "   • No tests completed"
+        )
 
         # Authentication status
         print("\n🔐 Authentication:")
-        print(f"   • Token Provided: {'✅ Yes' if self.test_results['has_token'] else '❌ No'}")
+        print(
+            f"   • Token Provided: {'✅ Yes' if self.test_results['has_token'] else '❌ No'}"
+        )
 
         # Working endpoints
-        working_endpoints = [ep for ep, result in self.test_results["endpoints"].items()
-                           if not result.get("error") and result.get("success", False)]
+        working_endpoints = [
+            ep
+            for ep, result in self.test_results["endpoints"].items()
+            if not result.get("error") and result.get("success", False)
+        ]
 
         if working_endpoints:
             print(f"\n✅ Working Endpoints ({len(working_endpoints)}):")
@@ -285,8 +317,11 @@ class SwechaAPITester:
                 print(f"   • {endpoint} ({result.get('status_code', 'N/A')})")
 
         # Failed endpoints
-        failed_endpoints = [ep for ep, result in self.test_results["endpoints"].items()
-                          if result.get("error") or not result.get("success", False)]
+        failed_endpoints = [
+            ep
+            for ep, result in self.test_results["endpoints"].items()
+            if result.get("error") or not result.get("success", False)
+        ]
 
         if failed_endpoints:
             print(f"\n❌ Failed Endpoints ({len(failed_endpoints)}):")
@@ -297,8 +332,10 @@ class SwechaAPITester:
 
         # Recommendations
         print("\n💡 Recommendations:")
-        if not self.test_results['has_token']:
-            print("   • Set SWECHA_API_TOKEN environment variable for authenticated testing")
+        if not self.test_results["has_token"]:
+            print(
+                "   • Set SWECHA_API_TOKEN environment variable for authenticated testing"
+            )
 
         if successful_tests == 0:
             print("   • Check if API server is running and accessible")
@@ -310,13 +347,16 @@ class SwechaAPITester:
             print("   • API appears to be functioning well!")
 
         # Save detailed report
-        report_file = f"swecha_api_test_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        report_file = (
+            f"swecha_api_test_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         try:
-            with open(report_file, 'w', encoding='utf-8') as f:
+            with open(report_file, "w", encoding="utf-8") as f:
                 json.dump(self.test_results, f, indent=2, ensure_ascii=False)
             print(f"\n📄 Detailed report saved to: {report_file}")
         except Exception as e:
             print(f"\n⚠️ Could not save report: {e}")
+
 
 def main():
     """Main test execution"""
@@ -337,6 +377,7 @@ def main():
     tester.generate_report()
 
     print(f"\n🏁 Test completed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
 
 if __name__ == "__main__":
     main()

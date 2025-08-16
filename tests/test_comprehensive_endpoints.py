@@ -3,18 +3,21 @@
 Test more comprehensive endpoint patterns for Swecha API
 """
 
-import requests
 import json
+
+import requests
+
 from src.api.swecha_config import SWECHA_API_TOKEN
+
 
 def test_comprehensive_endpoints():
     """Test comprehensive endpoint patterns"""
 
     base_url = "https://api.corpus.swecha.org"
     headers = {
-        'Authorization': f'Bearer {SWECHA_API_TOKEN}',
-        'Content-Type': 'application/json',
-        'User-Agent': 'WhispNote/1.0 (Telugu Voice Notes App)'
+        "Authorization": f"Bearer {SWECHA_API_TOKEN}",
+        "Content-Type": "application/json",
+        "User-Agent": "WhispNote/1.0 (Telugu Voice Notes App)",
     }
 
     # More comprehensive endpoint patterns
@@ -26,36 +29,30 @@ def test_comprehensive_endpoints():
         ("/api/v1/audio", "POST"),
         ("/api/v1/corpus", "GET"),
         ("/api/v1/corpus", "POST"),
-
         # Alternative patterns
         ("/v1/texts", "GET"),
         ("/v1/texts", "POST"),
         ("/v1/contribute", "GET"),
         ("/v1/contribute", "POST"),
-
         # Direct resource patterns
         ("/text", "POST"),
         ("/audio", "POST"),
         ("/data", "POST"),
         ("/telugu", "POST"),
-
         # FastAPI/Django patterns
         ("/texts/", "GET"),
         ("/texts/", "POST"),
         ("/audio/", "GET"),
         ("/audio/", "POST"),
-
         # Info endpoints
         ("/info", "GET"),
         ("/version", "GET"),
         ("/endpoints", "GET"),
         ("/schema", "GET"),
-
         # User/Auth endpoints
         ("/user", "GET"),
         ("/profile", "GET"),
         ("/me", "GET"),
-
     ]
 
     print("🔍 Comprehensive Swecha API Endpoint Testing")
@@ -71,16 +68,15 @@ def test_comprehensive_endpoints():
             sample_payload = {
                 "text": "ఇది ఒక తెలుగు వాక్యం",
                 "language": "te",
-                "metadata": {
-                    "source": "WhispNote",
-                    "method": "test"
-                }
+                "metadata": {"source": "WhispNote", "method": "test"},
             }
 
             if method == "GET":
                 response = requests.get(url, headers=headers, timeout=10)
             else:  # POST
-                response = requests.post(url, headers=headers, json=sample_payload, timeout=10)
+                response = requests.post(
+                    url, headers=headers, json=sample_payload, timeout=10
+                )
 
             status = response.status_code
 
@@ -97,7 +93,9 @@ def test_comprehensive_endpoints():
                 working_endpoints.append((endpoint, method, status))
 
             elif status == 422:
-                print(f"📝 {method} {endpoint} - VALIDATION ERROR (need correct payload)")
+                print(
+                    f"📝 {method} {endpoint} - VALIDATION ERROR (need correct payload)"
+                )
                 try:
                     error = response.json()
                     print(f"   Details: {error}")
@@ -139,6 +137,7 @@ def test_comprehensive_endpoints():
         print("  ❌ No additional working endpoints found")
 
     return working_endpoints
+
 
 if __name__ == "__main__":
     endpoints = test_comprehensive_endpoints()

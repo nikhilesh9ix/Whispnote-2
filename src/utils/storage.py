@@ -351,7 +351,7 @@ class StorageManager:
     def _load_json(self, file_path: Path) -> Optional[Dict]:
         """Load data from JSON file"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 return json.load(f)
         except Exception:
             return None
