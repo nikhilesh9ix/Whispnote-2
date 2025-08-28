@@ -123,7 +123,7 @@ export OPENROUTER_API_KEY="your-new-api-key-here"
 
 The API key exposure vulnerability has been **completely fixed**. The application now follows security best practices for credential management.
 
-**Next Steps**: 
+**Next Steps**:
 1. Revoke the exposed API key
 2. Generate and configure new API key
 3. Test the application with secure configuration
