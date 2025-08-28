@@ -102,12 +102,13 @@ class AdvancedAISummarizer:
             import openai
 
             # Use your specific OpenRouter configuration
+            api_key = os.getenv("OPENROUTER_API_KEY")
+            if not api_key:
+                raise ValueError("OPENROUTER_API_KEY environment variable is required")
+            
             client = openai.OpenAI(
                 base_url="https://openrouter.ai/api/v1",
-                api_key=os.getenv(
-                    "OPENROUTER_API_KEY",
-                    "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",
-                ),
+                api_key=api_key,
             )
 
             # Language-specific prompts
