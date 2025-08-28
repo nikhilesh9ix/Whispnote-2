@@ -23,3 +23,9 @@ swecha_config.py
 whispnote_data/
 temp_*
 *.tmp
+
+# Cache directories and large binaries
+.cache/
+*.exe
+ffmpeg/
+*.dll
